@@ -1,1 +1,5 @@
+# Virtual Environment
 env/
+
+# PyCharm files
+.idea/
