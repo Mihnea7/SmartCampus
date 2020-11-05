@@ -1,9 +1,12 @@
 from flask import Flask, jsonify
 import pymongo
+import configparser
 
 app = Flask(__name__)
-client = pymongo.MongoClient("mongodb+srv://Mihnea:UofGscdb17@cluster0.9fsaz.mongodb.net/Cluster0?retryWrites=true&w"
-                             "=majority")
+config = configparser.ConfigParser()
+config.read("config_flask.ini")
+print(config["DATABASE"]["CONSTRING"])
+client = pymongo.MongoClient(str(config["DATABASE"]["CONSTRING"]))
 db = client["SCDB"]
 
 
