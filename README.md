@@ -24,7 +24,7 @@ The project assumes the use of a Raspberry Pi computer on each sensor present in
 
 A diagram of the architecture the project employes is attached below, followed by an explanation.
 
-![Architecture Info]("img/architecture.png")
+![Architecture Info](/img/arch.png)
 
 
 The sensors gather their data and send it to the MongoDB via the MQTT protocol. MQTT (Message Queuing Telemetry Transport) is a common protocol in IoT devices because it is lightweight and efficient, suitable for devices with low resources such as microcontrollers. In the project's case MQTT was chosen because it showed better performance compared to HTTP, which is a verbose protocol, and is therefore more suitable for the Raspberry Pi. It also gives the user a choice of devices, as MQTT would allow the use of microcontrollers such as Arduinos.
