@@ -7,6 +7,10 @@ env/
 # Configuration files
 config_flask.ini
 
+# Pytest cache
+.pytest_cache/
+__pycache__/
+
 frontend/node_modules
 frontend/.pnp
 frontend/.pnp.js
