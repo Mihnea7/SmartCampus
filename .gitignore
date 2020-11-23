@@ -11,6 +11,7 @@ config_flask.ini
 .pytest_cache/
 __pycache__/
 
+.coverage
 frontend/node_modules
 frontend/.pnp
 frontend/.pnp.js
