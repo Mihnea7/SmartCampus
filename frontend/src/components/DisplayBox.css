@@ -1,0 +1,7 @@
+.displaybox {
+    width: 320px;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 10px;
+    display: inline-block;
+}
