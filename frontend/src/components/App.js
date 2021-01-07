@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}> Smart Campus Dashboard</h1>
-      <Menu />
+      <BoydOrr />
     </div>
   );
 }
