@@ -8,25 +8,25 @@ def app():
     yield flask_app
 
 
-@pytest.fixture
+@pytest.fixture()
 def client(app):
     yield app.test_client()
 
 
-def test_index(app, client):
+def test_index(client):
     rv = client.get('/')
     assert rv.status_code == 200
     assert b"No data to show" in rv.data
 
 
-def test_test_temperature(app, client):
+def test_test_temperature(client):
     rv = client.get('/test-temp')
     assert rv.status_code == 200
     expected = json.loads(rv.get_data(as_text=True))
     assert len(expected) == 5
 
 
-def test_get_boyd_orr_sensors(app, client):
+def test_get_boyd_orr_sensors(client):
     rv = client.get('/boyd-orr')
     assert rv.status_code == 200
     expected = json.loads(rv.get_data(as_text=True))
