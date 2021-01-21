@@ -73,6 +73,7 @@ export default class GraphComponent extends React.Component {
     const {timerange} = this.state;
     return (
         <ChartContainer
+          class="displayGraph"
           timeRange={timerange}
           width={700}
           enablePanZoom={true}

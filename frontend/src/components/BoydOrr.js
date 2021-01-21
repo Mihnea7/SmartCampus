@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import DisplayBox from "./DisplayBox.js";
 import GraphComponent from "./GraphComponent.js";
+import "./DisplayBox.css";
 
 
 export default class BoydOrr extends React.Component {
@@ -23,9 +24,9 @@ export default class BoydOrr extends React.Component {
 
   render() {
     return (
-      <div>
+      <div >
         {this.state.sensors.map((sensor) => (
-          <div>
+          <div class="displaySensor">
             <DisplayBox name={sensor["name"]} currentData={sensor["current"]} />
             <GraphComponent seriesData={sensor["history"]} /> 
             
