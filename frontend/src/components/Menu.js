@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "react-sidebar";
-import styles from "./Menu.css";
 import { Link } from "react-router-dom";
+import "./Menu.css";
 
 export default class Menu extends React.Component {
   constructor(props) {
@@ -20,36 +20,38 @@ export default class Menu extends React.Component {
 
   render() {
     return (
-      
-        <Sidebar
-          styles={{ root:{width:200}, sidebar: { background: "white" }, overlay: {visibility: "hidden"} }}
-          sidebar={
-            <div>
-              <b>Menu</b>
-              <ul>
-                <li>Library</li>
-                <li>
-                  <Link to="/boyd-orr">Boyd Orr</Link>
-                </li>
-                <li>QMU</li>
-                <li>GUU</li>
-                <li>Parking</li>
-                <li>Societies</li>
-                <li className={styles.liAbout}>About</li>
-              </ul>
-            </div>
-          }
-          open={this.state.menuOpen}
-          onSetOpen={this.onSetMenuOpen}
+      <Sidebar
+        styles={{
+          root: { width: 200 },
+          sidebar: { background: "white" },
+          overlay: { visibility: "hidden" },
+        }}
+        sidebar={
+          <div>
+            <b>Menu</b>
+            <ul>
+              <li>Library</li>
+              <li>
+                <Link to="/boyd-orr">Boyd Orr</Link>
+              </li>
+              <li>QMU</li>
+              <li>GUU</li>
+              <li>Parking</li>
+              <li>Societies</li>
+              <li>About</li>
+            </ul>
+          </div>
+        }
+        open={this.state.menuOpen}
+        onSetOpen={this.onSetMenuOpen}
+      >
+        <button
+          class="menubutton"
+          onClick={() => this.onSetMenuOpen(!this.state.open)}
         >
-          <button
-            style={{ margin: 20, padding: 10 }}
-            onClick={() => this.onSetMenuOpen(!this.state.open)}
-          >
-            Open menu
-          </button>
-        </Sidebar>
-      
+          Open menu
+        </button>
+      </Sidebar>
     );
   }
 }
