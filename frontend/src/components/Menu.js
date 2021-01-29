@@ -30,7 +30,9 @@ export default class Menu extends React.Component {
           <div>
             <b>Menu</b>
             <ul>
-              <li>Library</li>
+              <li>
+                <Link to="/library">Library</Link>
+              </li>
               <li>
                 <Link to="/boyd-orr">Boyd Orr</Link>
               </li>
