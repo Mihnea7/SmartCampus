@@ -10,7 +10,9 @@ mongo_client = pymongo.MongoClient(str(config["DATABASE"]["CONSTRING"]))
 scdb = mongo_client["SCDB"]
 
 BROKER_ID = "192.168.0.18"
-#code to insert
+
+
+# code to insert
 # x = tempSens.insert_one(in_dict)
 # print("Added object with ID ", x)
 
@@ -22,6 +24,7 @@ def on_message(client, userdata, msg):
         print("Added object with ID ", newEntry)
     except:
         print("Unable to add element to database")
+
 
 client = mqtt.Client()
 client.on_message = on_message

@@ -36,7 +36,7 @@ jobs:
       env:
         constring_secret: ${{ secrets.CONSTRING }}
       run: |
-        pytest --cov-fail-under=80 --constring="$constring_secret"
+        pytest --cov-report term --cov=. test_flask.py --cov-fail-under=80 --constring="$constring_secret"
 
   frontend:
    runs-on: ubuntu-latest
