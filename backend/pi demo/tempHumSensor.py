@@ -10,10 +10,11 @@ DHT_PIN = 4
 
 NAME = "bedroom0"
 BROKER_IP = "192.168.0.18"
-sensor_data = {"name" : NAME, "temperature" : 0, "humidity" : 0}
+sensor_data = {"name": NAME, "temperature": 0, "humidity": 0}
 
 config = configparser.ConfigParser()
 config.read("config_flask.ini")
+
 
 def get_sensor_measurement():
     humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
@@ -25,6 +26,7 @@ def get_sensor_measurement():
     else:
         return get_sensor_measurement()
 
+
 client = mqtt.Client()
 client.connect(BROKER_IP, 1883, 60)
 client.loop_start()
@@ -34,9 +36,9 @@ try:
     sensor_data["temperature"] = temperature
     sensor_data["humidity"] = humidity
     sensor_data["time"] = time.time()
-    
+
     client.publish("sensors/dht11", json.dumps(sensor_data), 1)
-    
+
     time.sleep(2)
 
 except:

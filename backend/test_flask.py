@@ -36,3 +36,15 @@ def test_get_boyd_orr_sensors(client):
     assert type(first_item["level"]) is int
     assert type(first_item["current"]) is dict
     assert type(first_item["history"]) is list
+
+
+def test_library_sensors(client):
+    rv = client.get('/library')
+    assert rv.status_code == 200
+    expected = json.loads(rv.get_data(as_text=True))
+    assert len(expected) > 0
+    first_item = expected[0]
+    assert first_item["name"] is not None
+    assert type(first_item["level"]) is int
+    assert type(first_item["current"]) is dict
+    assert type(first_item["history"]) is list
