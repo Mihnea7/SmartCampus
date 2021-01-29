@@ -33,6 +33,6 @@ def test_get_boyd_orr_sensors(client):
     assert len(expected) > 0
     first_item = expected[0]
     assert first_item["name"] is not None
-    assert type(first_item["level"]) is str
+    assert type(first_item["level"]) is int
     assert type(first_item["current"]) is dict
     assert type(first_item["history"]) is list
