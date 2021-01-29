@@ -2,6 +2,7 @@ import BoydOrr from "./BoydOrr.js";
 import Header from "./Header.js";
 import { Switch, Route } from "react-router-dom";
 import Welcome from "./Welcome.js";
+import Library from "./Library.js";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Switch>
         <Route path="/" component={Welcome} exact />
         <Route path="/boyd-orr" component={BoydOrr} />
+        <Route path="/library" component={Library} />
         <Route component={Error} />
       </Switch>
     </main>
