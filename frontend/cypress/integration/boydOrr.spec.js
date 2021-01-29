@@ -10,6 +10,11 @@ describe("Boyd Orr Test", function () {
 
   it("Test if each display box corresponds to a graph", function () {
     let tested = cy.get(".displaybox").its("length");
-    tested.should("eq", 8);
+    tested.should("eq", 10);
+  });
+
+  it("Test if correct number of levels is displayed", function () {
+    let tested = cy.get(".level").its("length");
+    tested.should("eq", 3);
   });
 });

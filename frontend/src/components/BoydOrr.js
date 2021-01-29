@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
-import DisplayBox from "./DisplayBox.js";
-import GraphComponent from "./GraphComponent.js";
-import "./DisplayBox.css";
+import Level from "./Level";
 
 export default class BoydOrr extends React.Component {
   constructor(props) {
@@ -21,15 +19,23 @@ export default class BoydOrr extends React.Component {
     });
   }
 
+  createLevelMap() {
+    const levelMap = {};
+    this.state.sensors.forEach((element) => {
+      if (!levelMap.hasOwnProperty(element.level)) levelMap[element.level] = [];
+      levelMap[element.level].push(element);
+    });
+
+    return levelMap;
+  }
+
   render() {
+    const levelMap = this.createLevelMap();
     return (
       <div>
-        {this.state.sensors.map((sensor) => (
-          <div class="displaySensor">
-            <DisplayBox name={sensor["name"]} currentData={sensor["current"]} />
-            <GraphComponent seriesData={sensor["history"]} />
-          </div>
-        ))}
+        {Object.keys(levelMap).map((level) => {
+          return <Level sensors={levelMap[level]} />;
+        })}
       </div>
     );
   }
