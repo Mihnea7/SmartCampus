@@ -1,12 +1,4 @@
-.displaybox {
-  width: 320px;
-  border: 2px solid black;
-  margin: 20px;
-  padding: 10px;
-  display: inline-block;
-}
-
-.displaySensor {
+.display-sensor {
   width: 1200px;
   z-index: 5;
   border: 2px solid black;
@@ -18,4 +10,12 @@
 
 .ReactCollapse--collapse {
   transition: height 500ms;
+}
+
+.collapsible-text {
+  cursor: pointer;
+}
+
+hr {
+  position: absolute;
 }

@@ -22,4 +22,15 @@ describe("Boyd Orr Test", function () {
     let tested = cy.get(".level").its("length");
     tested.should("eq", 3);
   });
+
+  it("Test if level is collapsed", function () {
+    cy.reload();
+    cy.get(".display-sensor").should("not.exist");
+  });
+
+  it("Test if level is active", function () {
+    cy.reload();
+    cy.get(".collapsible-text").first().click();
+    cy.get(".display-sensor").should("exist");
+  });
 });
