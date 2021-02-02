@@ -1,6 +1,7 @@
 import React from "react";
 import DisplayBox from "./DisplayBox.js";
 import GraphComponent from "./GraphComponent.js";
+import Arrow from "./Arrow.js"
 import { Collapse } from "react-collapse";
 import "./DisplaySensor.css";
 
@@ -24,7 +25,7 @@ export default class Level extends React.Component {
       <div class="display-sensor">
         <div class="formal-name">
           <h3 class="sensorbox-collapsible-text" onClick={this.toggleCollapse}>
-            <center>{this.props.formal}</center>
+            <center>{this.props.formal}<Arrow toggle={this.state.opened} /></center>
           </h3>
         </div>
         <Collapse isOpened={this.state.opened}>
