@@ -1,8 +1,6 @@
 import React from "react";
-import DisplayBox from "./DisplayBox.js";
-import GraphComponent from "./GraphComponent.js";
+import DisplaySensor from "./DisplaySensor.js";
 import { Collapse } from "react-collapse";
-import "./DisplayBox.css";
 import "./Level.css";
 
 export default class Level extends React.Component {
@@ -27,16 +25,17 @@ export default class Level extends React.Component {
         <h2 class="collapsible-text" onClick={this.toggleCollapse}>
           <center>Level {this.props.sensors[0].level}</center>
         </h2>
-        <hr />
-        <Collapse isOpened={this.state.opened}>
+        <Collapse
+          theme={{ content: "level-content", collapse: "level-collapse" }}
+          isOpened={this.state.opened}
+        >
           {this.state.sensors.map((sensor) => (
-            <div class="display-sensor">
-              <DisplayBox
-                name={sensor["name"]}
-                currentData={sensor["current"]}
-              />
-              <GraphComponent seriesData={sensor["history"]} />
-            </div>
+            <DisplaySensor
+              name={sensor["name"]}
+              formal={sensor["formal"]}
+              currentData={sensor["current"]}
+              seriesData={sensor["history"]}
+            />
           ))}
         </Collapse>
       </div>

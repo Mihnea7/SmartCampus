@@ -1,0 +1,20 @@
+.display-sensor {
+  width: 1400px;
+  z-index: 5;
+  border: 2px solid black;
+  margin-left: 170px;
+  margin-bottom: 50px;
+  margin-top: 40px;
+}
+
+.sensorbox-collapsible-text {
+  cursor: pointer;
+}
+
+.formal-name {
+  display: inline-block;
+}
+
+.graph-box {
+  display: inline-block;
+}

@@ -1,21 +1,25 @@
-.display-sensor {
-  width: 1200px;
-  z-index: 5;
-  border: 2px solid black;
-  margin-left: 170px;
-  margin-bottom: 50px;
-  padding: 50px;
-  display: flex;
+.level {
+  border-bottom: 5px solid blue;
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
-
 .ReactCollapse--collapse {
   transition: height 500ms;
 }
 
-.collapsible-text {
-  cursor: pointer;
+.ReactCollapse--content {
+  padding-top: 25px;
+  border-top: 2px solid black;
 }
 
-hr {
-  position: absolute;
+.level-collapse {
+  transition: height 500ms;
+}
+
+.level-content {
+  border-top: 5px solid blue;
+}
+
+.collapsible-text {
+  cursor: pointer;
 }
