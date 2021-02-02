@@ -1,6 +1,7 @@
 import React from "react";
 import DisplaySensor from "./DisplaySensor.js";
 import { Collapse } from "react-collapse";
+import Arrow from "./Arrow.js";
 import "./Level.css";
 
 export default class Level extends React.Component {
@@ -23,7 +24,7 @@ export default class Level extends React.Component {
     return (
       <div class="level">
         <h2 class="collapsible-text" onClick={this.toggleCollapse}>
-          <center>Level {this.props.sensors[0].level}</center>
+          <center>Level {this.props.sensors[0].level}<Arrow toggle={this.state.opened}/></center>
         </h2>
         <Collapse
           theme={{ content: "level-content", collapse: "level-collapse" }}
