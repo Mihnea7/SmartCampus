@@ -15,25 +15,26 @@ export default class GraphComponent extends React.Component {
     this.getTimeValue = this.getTimeValue.bind(this);
     this.generateTimeSeries = this.generateTimeSeries.bind(this);
     this.handleTimeRangeChange = this.handleTimeRangeChange.bind(this);
+    this.handleTrackerChanged = this.handleTrackerChanged.bind(this);
 
     this.state = {
       timerange: new TimeRange([1599820503, 1606757703]),
+      tracker: 0,
     };
   }
 
   componentDidMount() {
     let ts = this.generateTimeSeries(this.props.seriesData);
-     ts.sort(this.sortFunction);
+    ts.sort(this.sortFunction);
     const timeSeriesData = {
       name: "chart",
       columns: ["time", "value"],
       points: ts,
     };
-     const timeseries = new TimeSeries(timeSeriesData);
+    const timeseries = new TimeSeries(timeSeriesData);
     this.setState({
-      timerange:timeseries.timerange()
+      timerange: timeseries.timerange(),
     });
-
   }
   getTimeValue(obj) {
     return [Date.parse(obj["time"]), obj["value"]];
@@ -46,7 +47,6 @@ export default class GraphComponent extends React.Component {
     });
 
     return timeSeriesList;
-
   }
 
   handleTimeRangeChange = (timerange) => {
@@ -61,31 +61,57 @@ export default class GraphComponent extends React.Component {
     }
   }
 
+  handleTrackerChanged(t) {
+    this.setState({ tracker: t });
+  }
+
   render() {
     let ts = this.generateTimeSeries(this.props.seriesData);
-     ts.sort(this.sortFunction);
+    ts.sort(this.sortFunction);
     const timeSeriesData = {
       name: "chart",
       columns: ["time", "value"],
       points: ts,
     };
-     const timeseries = new TimeSeries(timeSeriesData);
-    const {timerange} = this.state;
+    console.log(ts);
+    const timeseries = new TimeSeries(timeSeriesData);
+    const { timerange } = this.state;
+
     return (
-        <ChartContainer
-          class="displayGraph"
-          timeRange={timerange}
-          width={700}
-          enablePanZoom={true}
-          onTimeRangeChanged={this.handleTimeRangeChange}
+      <ChartContainer
+        class="displayGraph"
+        timeRange={timerange}
+        width={700}
+        showGrid={true}
+        showGridPosition="under"
+        trackerPosition={this.state.tracker}
+        onTrackerChanged={this.handleTrackerChanged}
+        enablePanZoom={true}
+        onTimeRangeChanged={this.handleTimeRangeChange}
+      >
+        <ChartRow
+          height="200"
+          trackerInfoValues={[]}
+          trackerInfoHeight={50}
         >
-          <ChartRow height="200">
-            <YAxis id="axis1" label="Value" min={0.0} max={80} width="100" />
-            <Charts>
-              <LineChart axis="axis1" series={timeseries} column={["value"]} interpolation="curveBasis"/>
-            </Charts>
-          </ChartRow>
-        </ChartContainer>
+          <YAxis
+            id="axis1"
+            label="Value"
+            showGrid={true}
+            min={0.0}
+            max={80}
+            width="100"
+          />
+          <Charts>
+            <LineChart
+              axis="axis1"
+              series={timeseries}
+              column={["value"]}
+              interpolation="curveBasis"
+            />
+          </Charts>
+        </ChartRow>
+      </ChartContainer>
     );
   }
 }
