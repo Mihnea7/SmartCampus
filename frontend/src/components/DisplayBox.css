@@ -5,17 +5,3 @@
   padding: 10px;
   display: inline-block;
 }
-
-.displaySensor {
-  width: 1200px;
-  z-index: 5;
-  border: 2px solid black;
-  margin-left: 170px;
-  margin-bottom: 50px;
-  padding: 50px;
-  display: flex;
-}
-
-.ReactCollapse--collapse {
-  transition: height 500ms;
-}
