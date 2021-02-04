@@ -1,6 +1,11 @@
-.modal {
-    font-size: 12px;
-  }
-  .popup-box {
-      background-color: black;
-  }
+.popup-box {
+  background-color: black;
+}
+
+.fullscreen-icon {
+  display: inline-block;
+}
+
+.zoom-icons {
+  display: inline-block;
+}
