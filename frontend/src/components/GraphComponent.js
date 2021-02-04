@@ -20,6 +20,9 @@ export default class GraphComponent extends React.Component {
     this.state = {
       timerange: new TimeRange([1599820503, 1606757703]),
       tracker: 0,
+      yMaxVal: this.props.yMaxVal,
+      width: this.props.width,
+      height: this.props.height,
     };
   }
 
@@ -53,6 +56,8 @@ export default class GraphComponent extends React.Component {
     this.setState({ timerange });
   };
 
+  handleyMaxVal
+
   sortFunction(a, b) {
     if (a[0] === b[0]) {
       return 0;
@@ -81,7 +86,7 @@ export default class GraphComponent extends React.Component {
       <ChartContainer
         class="displayGraph"
         timeRange={timerange}
-        width={700}
+        width={this.props.width}
         showGrid={true}
         showGridPosition="under"
         trackerPosition={this.state.tracker}
@@ -90,7 +95,7 @@ export default class GraphComponent extends React.Component {
         onTimeRangeChanged={this.handleTimeRangeChange}
       >
         <ChartRow
-          height="200"
+          height={this.state.height}
           trackerInfoValues={[]}
           trackerInfoHeight={50}
         >
@@ -99,7 +104,7 @@ export default class GraphComponent extends React.Component {
             label="Value"
             showGrid={true}
             min={0.0}
-            max={80}
+            max={this.state.yMaxVal}
             width="100"
           />
           <Charts>

@@ -2,6 +2,7 @@ import React from "react";
 import DisplayBox from "./DisplayBox.js";
 import GraphComponent from "./GraphComponent.js";
 import Arrow from "./Arrow.js"
+import GraphControl from "./GraphControl.js";
 import { Collapse } from "react-collapse";
 import "./DisplaySensor.css";
 
@@ -34,7 +35,8 @@ export default class Level extends React.Component {
             currentData={this.props.currentData}
           />
           <div class="graph-box">
-            <GraphComponent seriesData={this.props.seriesData} />
+            <GraphComponent seriesData={this.props.seriesData} yMaxVal={80} width={700} height={200}/>
+            <GraphControl seriesData={this.props.seriesData} yMaxVal={80} width={1500} height={500} />
           </div>
         </Collapse>
       </div>
