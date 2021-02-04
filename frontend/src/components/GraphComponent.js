@@ -6,6 +6,8 @@ import {
   YAxis,
   LineChart,
 } from "react-timeseries-charts";
+import GraphZoom from "./GraphZoom.js";
+import FullscreenGraph from "./FullscreenGraph.js"
 import { TimeSeries, TimeRange } from "pondjs";
 
 export default class GraphComponent extends React.Component {
@@ -16,6 +18,7 @@ export default class GraphComponent extends React.Component {
     this.generateTimeSeries = this.generateTimeSeries.bind(this);
     this.handleTimeRangeChange = this.handleTimeRangeChange.bind(this);
     this.handleTrackerChanged = this.handleTrackerChanged.bind(this);
+    this.addZoom = this.addZoom.bind(this);
 
     this.state = {
       timerange: new TimeRange([1599820503, 1606757703]),
@@ -56,7 +59,7 @@ export default class GraphComponent extends React.Component {
     this.setState({ timerange });
   };
 
-  handleyMaxVal
+  handleyMaxVal;
 
   sortFunction(a, b) {
     if (a[0] === b[0]) {
@@ -68,6 +71,14 @@ export default class GraphComponent extends React.Component {
 
   handleTrackerChanged(t) {
     this.setState({ tracker: t });
+  }
+
+  addZoom(amount) {
+    this.setState((prevState) => {
+      return {
+        yMaxVal: prevState.yMaxVal + amount,
+      };
+    });
   }
 
   render() {
@@ -83,40 +94,46 @@ export default class GraphComponent extends React.Component {
     const { timerange } = this.state;
 
     return (
-      <ChartContainer
-        class="displayGraph"
-        timeRange={timerange}
-        width={this.props.width}
-        showGrid={true}
-        showGridPosition="under"
-        trackerPosition={this.state.tracker}
-        onTrackerChanged={this.handleTrackerChanged}
-        enablePanZoom={true}
-        onTimeRangeChanged={this.handleTimeRangeChange}
-      >
-        <ChartRow
-          height={this.state.height}
-          trackerInfoValues={[]}
-          trackerInfoHeight={50}
+      <div>
+        <ChartContainer
+          class="displayGraph"
+          timeRange={timerange}
+          width={this.props.width}
+          showGrid={true}
+          showGridPosition="under"
+          trackerPosition={this.state.tracker}
+          onTrackerChanged={this.handleTrackerChanged}
+          enablePanZoom={true}
+          onTimeRangeChanged={this.handleTimeRangeChange}
         >
-          <YAxis
-            id="axis1"
-            label="Value"
-            showGrid={true}
-            min={0.0}
-            max={this.state.yMaxVal}
-            width="100"
-          />
-          <Charts>
-            <LineChart
-              axis="axis1"
-              series={timeseries}
-              column={["value"]}
-              interpolation="curveBasis"
+          <ChartRow
+            height={this.state.height}
+            trackerInfoValues={[]}
+            trackerInfoHeight={50}
+          >
+            <YAxis
+              id="axis1"
+              label="Value"
+              showGrid={true}
+              min={0.0}
+              max={this.state.yMaxVal}
+              width="100"
             />
-          </Charts>
-        </ChartRow>
-      </ChartContainer>
+            <Charts>
+              <LineChart
+                axis="axis1"
+                series={timeseries}
+                column={["value"]}
+                interpolation="curveBasis"
+              />
+            </Charts>
+          </ChartRow>
+        </ChartContainer>
+        <center>
+        <FullscreenGraph seriesData={this.props.seriesData} yMaxVal={this.state.yMaxVal} width={1500} height={500} />
+        <GraphZoom onClick={this.addZoom} />
+        </center>
+      </div>
     );
   }
 }

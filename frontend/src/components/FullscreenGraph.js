@@ -7,6 +7,7 @@ import "./GraphControl.css"
 export default class GraphControl extends React.Component {
   render() {
     return (
+      <div class="fullscreen-icon">
       <Popup
         trigger={
           <img
@@ -30,6 +31,7 @@ export default class GraphControl extends React.Component {
         />
         </div>
       </Popup>
+      </div>
     );
   }
 }
