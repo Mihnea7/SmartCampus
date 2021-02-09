@@ -36,6 +36,9 @@ export default class Menu extends React.Component {
               <li>
                 <Link to="/boyd-orr">Boyd Orr</Link>
               </li>
+              <li>
+                <Link to="/outside-sensors">Outside Sensors</Link>
+              </li>
               <li>QMU</li>
               <li>GUU</li>
               <li>Parking</li>
