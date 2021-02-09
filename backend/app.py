@@ -67,5 +67,15 @@ def get_library_sensors():
     return jsonify(all_sensors)
 
 
+@app.route("/outside-sensors", methods=["GET"])
+@cross_origin()
+def get_outside_sensors():
+    all_sensors = []
+    for elem in db["OutsideSensors"].find():
+        elem["_id"] = str(elem["_id"])
+        all_sensors.append(elem)
+    return jsonify(all_sensors)
+
+
 if __name__ == "__main__":
     app.run()
