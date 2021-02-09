@@ -1,0 +1,17 @@
+.logo-image {
+  float: left;
+  width: 170px;
+  height: auto;
+  display: block;
+  margin-left: 180px;
+  margin-right: 100px;
+}
+.header-text {
+  display: inline;
+  text-align: center;
+}
+.header-div {
+  display: block;
+  padding-bottom: 40px;
+  border-bottom: 2px solid black;
+}
