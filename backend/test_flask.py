@@ -61,3 +61,18 @@ def test_outside_sensors(client):
     assert type(first_item["long"]) is float
     assert type(first_item["current"]) is dict
     assert type(first_item["history"]) is list
+
+
+def test_get_specific_outside_sensor_correct_input(client):
+    rv = client.get("/outside-sensors?sensorid=6020441c6105ef7c424d56ce")
+    assert rv.status_code == 200
+    expected = json.loads(rv.get_data(as_text=True))
+    assert len(expected) == 7
+    assert len([expected]) == 1
+
+
+def test_get_specific_outside_sensor_wrong_input(client):
+    rv = client.get("/outside-sensors?sensorid=6020441c6105ef7e")
+    assert rv.status_code == 200
+    expected = json.loads(rv.get_data(as_text=True))
+    assert len(expected) == 0
