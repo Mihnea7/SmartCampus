@@ -1,5 +1,6 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import cross_origin
+from bson.objectid import ObjectId
 import pymongo
 import configparser
 import argparse
@@ -70,6 +71,14 @@ def get_library_sensors():
 @app.route("/outside-sensors", methods=["GET"])
 @cross_origin()
 def get_outside_sensors():
+    sensor_id = request.args.get("sensorid")
+    if sensor_id:
+        try:
+            sensor = db["OutsideSensors"].find_one({"_id": ObjectId(sensor_id)})
+            sensor["_id"] = str(sensor["_id"])
+            return jsonify(sensor)
+        except Exception:
+            return jsonify({})
     all_sensors = []
     for elem in db["OutsideSensors"].find():
         elem["_id"] = str(elem["_id"])
