@@ -30,11 +30,17 @@ export default class Header extends React.Component {
     this.state.sensors.forEach((sensor) => {
       const pinSensor = {
         _id: sensor["_id"],
+        addHandler: "mouseover",
         location: [sensor["lat"], sensor["long"]],
-        option: {
+        infoboxOption: {
+          title: sensor["formalName"],
+          description: "Current value: " + sensor["current"]["value"],
+        },
+        pushPinOption: {
+          title: sensor["formalName"],
           color: "red",
         },
-        addHandler: {
+        pushPinAddHandler: {
           type: "click",
           callback: () => this.handleSelectSensor(sensor["_id"]),
         },
@@ -64,7 +70,7 @@ export default class Header extends React.Component {
               center={[55.872422, -4.28857]}
               navigationBarMode={"compact"}
               zoom={17}
-              pushPins={this.createPins()}
+              infoboxesWithPushPins={this.createPins()}
             />
           )}
         </div>
