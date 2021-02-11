@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Welcome from "./Welcome.js";
 import Library from "./Library.js";
 import OutsideSensors from "./OutsideSensors.js";
+import SingleSensorPage from "./SingleSensorPage.js"
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Route path="/" component={Welcome} exact />
         <Route path="/boyd-orr" component={BoydOrr} />
         <Route path="/library" component={Library} />
-        <Route path="/outside-sensors" component={OutsideSensors} />
+        <Route path="/outside-sensors" component={OutsideSensors} exact/>
+        <Route path="/outside-sensor" component={SingleSensorPage}/>
         <Route component={Error} />
       </Switch>
     </main>
