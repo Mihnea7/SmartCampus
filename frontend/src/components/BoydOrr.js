@@ -22,8 +22,9 @@ export default class BoydOrr extends React.Component {
   createLevelMap() {
     const levelMap = {};
     this.state.sensors.forEach((element) => {
-      if (!levelMap.hasOwnProperty(element.level)) levelMap[element.level] = [];
-      levelMap[element.level].push(element);
+      if (!levelMap.hasOwnProperty(element.level)) levelMap[element.level] = {"sensors": [], "currentPeople":0};
+      levelMap[element.level]["sensors"].push(element);
+      if (element.type === "headcount") levelMap[element.level]["currentPeople"] += element.current.value;
     });
 
     return levelMap;
@@ -31,10 +32,11 @@ export default class BoydOrr extends React.Component {
 
   render() {
     const levelMap = this.createLevelMap();
+    console.log(levelMap)
     return (
       <div>
         {Object.keys(levelMap).map((level) => {
-          return <Level sensors={levelMap[level]} />;
+          return <Level sensors={levelMap[level]["sensors"]} currentPeople={levelMap[level]["currentPeople"]}/>;
         })}
       </div>
     );

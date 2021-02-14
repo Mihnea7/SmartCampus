@@ -89,12 +89,20 @@ export default class GraphComponent extends React.Component {
       columns: ["time", "value"],
       points: ts,
     };
-    console.log(ts);
     const timeseries = new TimeSeries(timeSeriesData);
     const { timerange } = this.state;
 
+    const avg = timeseries.avg("value");
+    const max = timeseries.max("value")
+    const min = timeseries.min("value")
+
     return (
       <div>
+        <center>
+        Average value: {avg} <br />
+        Historic maximum: {max} <br />
+        Historic minimum: {min}
+        </center>
         <ChartContainer
           class="displayGraph"
           timeRange={timerange}

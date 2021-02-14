@@ -24,7 +24,10 @@ export default class Level extends React.Component {
     return (
       <div class="level">
         <h2 class="collapsible-text" onClick={this.toggleCollapse}>
-          <center>Level {this.props.sensors[0].level}<Arrow toggle={this.state.opened}/></center>
+          <center>
+            Level {this.props.sensors[0].level}
+            <Arrow toggle={this.state.opened} /> <br /> Current People: {this.props.currentPeople}
+          </center>
         </h2>
         <Collapse
           theme={{ content: "level-content", collapse: "level-collapse" }}
