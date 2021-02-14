@@ -86,5 +86,19 @@ def get_outside_sensors():
     return jsonify(all_sensors)
 
 
+@app.route("/sensor", methods=["GET"])
+@cross_origin()
+def get_sensor_by_id_collection():
+    collection = request.args.get("collection")
+    sensor_id = request.args.get("sensorid")
+    if sensor_id and collection:
+        try:
+            sensor = db[collection].find_one({"_id": ObjectId(sensor_id)})
+            sensor["_id"] = str(sensor["_id"])
+            return jsonify(sensor)
+        except Exception:
+            return jsonify({})
+
+
 if __name__ == "__main__":
     app.run()
