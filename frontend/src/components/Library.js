@@ -7,7 +7,10 @@ export default class Library extends React.Component {
     super(props);
     this.state = {
       sensors: [],
+      url: "library",
+      selected: [],
     };
+    this.selectSensor = this.selectSensor.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +35,21 @@ export default class Library extends React.Component {
     return levelMap;
   }
 
+  selectSensor(id) {
+    if (!this.state.selected.includes(id)) {
+      const joined = this.state.selected.concat(id);
+      this.setState({
+        selected: joined,
+      });
+    } else {
+      const i = this.state.selected.indexOf(id);
+      const deleted = this.state.selected.splice(i, 1);
+      this.setState({
+        selected: deleted,
+      });
+    }
+  }
+
   render() {
     const levelMap = this.createLevelMap();
     return (
@@ -41,6 +59,8 @@ export default class Library extends React.Component {
             <Level
               sensors={levelMap[level]["sensors"]}
               currentPeople={levelMap[level]["currentPeople"]}
+              url={this.state.url}
+              handler={this.selectSensor}
             />
           );
         })}

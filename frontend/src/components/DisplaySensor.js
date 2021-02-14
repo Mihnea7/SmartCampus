@@ -1,7 +1,7 @@
 import React from "react";
 import DisplayBox from "./DisplayBox.js";
 import GraphComponent from "./GraphComponent.js";
-import Arrow from "./Arrow.js"
+import Arrow from "./Arrow.js";
 import { Collapse } from "react-collapse";
 import "./DisplaySensor.css";
 
@@ -10,8 +10,10 @@ export default class Level extends React.Component {
     super(props);
     this.state = {
       opened: false,
+      selected: false,
     };
     this.toggleCollapse = this.toggleCollapse.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   toggleCollapse() {
@@ -20,12 +22,22 @@ export default class Level extends React.Component {
     }));
   }
 
+  handleSelect() {
+    this.setState((prevState) => ({
+      selected: !prevState.selected,
+    }));
+    this.props.handler(this.props.id);
+  }
+
   render() {
     return (
       <div class="display-sensor">
         <div class="formal-name">
           <h3 class="sensorbox-collapsible-text" onClick={this.toggleCollapse}>
-            <center>{this.props.formal}<Arrow toggle={this.state.opened} /></center>
+            <center>
+              {this.props.formal}
+              <Arrow toggle={this.state.opened} />
+            </center>
           </h3>
         </div>
         <Collapse isOpened={this.state.opened}>
@@ -34,9 +46,17 @@ export default class Level extends React.Component {
             currentData={this.props.currentData}
           />
           <div class="graph-box">
-            <GraphComponent seriesData={this.props.seriesData} yMaxVal={80} width={700} height={200}/>
+            <GraphComponent
+              seriesData={this.props.seriesData}
+              yMaxVal={80}
+              width={700}
+              height={200}
+            />
           </div>
         </Collapse>
+        <button onClick={this.handleSelect}>
+          {this.state.selected ? "Deselect" : "Select"}
+        </button>
       </div>
     );
   }
