@@ -76,3 +76,18 @@ def test_get_specific_outside_sensor_wrong_input(client):
     assert rv.status_code == 200
     expected = json.loads(rv.get_data(as_text=True))
     assert len(expected) == 0
+
+
+def test_get_sensor_by_id_collection_correct(client):
+    rv = client.get("/sensor?collection=BoydOrr&sensorid=5fbc0aef4bfde1fc24017a92")
+    assert rv.status_code == 200
+    expected = json.loads(rv.get_data(as_text=True))
+    assert len([expected]) == 1
+    assert expected["name"] == "221_headcount"
+
+
+def test_get_sensor_by_id_collection_wrong(client):
+    rv = client.get("/sensor?collection=wrong&sensorid=52")
+    assert rv.status_code == 200
+    expected = json.loads(rv.get_data(as_text=True))
+    assert len(expected) == 0
