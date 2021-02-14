@@ -35,10 +35,13 @@ export default class Level extends React.Component {
         >
           {this.state.sensors.map((sensor) => (
             <DisplaySensor
+              id={sensor["_id"]}
               name={sensor["name"]}
               formal={sensor["formal"]}
               currentData={sensor["current"]}
               seriesData={sensor["history"]}
+              url={this.props.url}
+              handler={this.props.handler}
             />
           ))}
         </Collapse>
