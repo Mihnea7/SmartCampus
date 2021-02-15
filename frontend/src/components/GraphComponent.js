@@ -40,6 +40,7 @@ export default class GraphComponent extends React.Component {
     const timeseries = new TimeSeries(timeSeriesData);
     this.setState({
       timerange: timeseries.timerange(),
+      yMaxVal: timeseries.max("value"),
     });
   }
   getTimeValue(obj) {
