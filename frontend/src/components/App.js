@@ -5,6 +5,7 @@ import Welcome from "./Welcome.js";
 import Library from "./Library.js";
 import OutsideSensors from "./OutsideSensors.js";
 import SingleSensorPage from "./SingleSensorPage.js"
+import Comparator from "./Comparator.js";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/library" component={Library} />
         <Route path="/outside-sensors" component={OutsideSensors} exact/>
         <Route path="/outside-sensor" component={SingleSensorPage}/>
+        <Route path="/compare" component={Comparator} />
         <Route component={Error} />
       </Switch>
     </main>

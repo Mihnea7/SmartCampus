@@ -8,10 +8,12 @@ export default class BoydOrr extends React.Component {
     this.state = {
       sensors: [],
       url: "boyd-orr",
+      collection: "BoydOrr",
       selected: [],
     };
 
     this.selectSensor = this.selectSensor.bind(this);
+    this.handleCompare = this.handleCompare.bind(this);
   }
 
   componentDidMount() {
@@ -42,19 +44,30 @@ export default class BoydOrr extends React.Component {
       this.setState({
         selected: joined,
       });
-    }
-    else {
+    } else {
       const i = this.state.selected.indexOf(id);
       const deleted = this.state.selected.splice(i, 1);
       this.setState({
         selected: deleted,
       });
-    } 
-
+    }
   }
 
+  handleCompare() {
+    console.log(this.state.selected);
+    if (this.state.selected.length > 1) {
+      let selectedString = "";
+      const idList = this.state.selected;
+      idList.forEach((id) => {
+        selectedString = selectedString.concat("&" + "sensorid=" + id);
+      });
+      const constring = `compare?collection=${this.state.collection}${selectedString}`;
+      window.open(constring);
+    }
+  }
   render() {
     const levelMap = this.createLevelMap();
+
     return (
       <div>
         {Object.keys(levelMap).map((level) => {
@@ -67,6 +80,7 @@ export default class BoydOrr extends React.Component {
             />
           );
         })}
+        <center><button style={{height:60, marginTop:70}} onClick={this.handleCompare}>See Comparison</button></center>
       </div>
     );
   }
