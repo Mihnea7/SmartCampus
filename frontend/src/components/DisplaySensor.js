@@ -44,6 +44,7 @@ export default class Level extends React.Component {
           <DisplayBox
             name={this.props.name}
             currentData={this.props.currentData}
+            capacity={this.props.capacity}
           />
           <div class="graph-box">
             <GraphComponent

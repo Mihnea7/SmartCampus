@@ -38,6 +38,7 @@ export default class Level extends React.Component {
               id={sensor["_id"]}
               name={sensor["name"]}
               formal={sensor["formal"]}
+              capacity={sensor["capacity"]}
               currentData={sensor["current"]}
               seriesData={sensor["history"]}
               url={this.props.url}
