@@ -10,6 +10,7 @@
     "pondjs": "^0.9.0",
     "react": "^17.0.1",
     "react-bingmaps": "^3.6.1",
+    "react-circular-progressbar": "^2.0.3",
     "react-collapse": "^5.1.0",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",

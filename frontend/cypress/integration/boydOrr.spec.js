@@ -15,7 +15,7 @@ describe("Boyd Orr Test", function () {
 
   it("Test the number of graphs", function () {
     let tested = cy.get("svg").its("length");
-    tested.should("eq", 10);
+    tested.should("eq", 14);
   });
 
   it("Test if correct number of levels is displayed", function () {
