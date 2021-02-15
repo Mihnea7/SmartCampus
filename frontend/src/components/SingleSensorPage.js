@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import DisplaySensor from "./DisplaySensor.js";
-export default class Header extends React.Component {
+export default class SingleSensorPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
