@@ -20,43 +20,44 @@ export default class Menu extends React.Component {
 
   render() {
     return (
-      <Sidebar
-        styles={{
-          root: { width: 200 },
-          sidebar: { background: "white" },
-          overlay: { visibility: "hidden" },
-        }}
-        sidebar={
-          <div>
-            <b>Menu</b>
-            <ul>
-              <li>
-                <Link to="/library">Library</Link>
-              </li>
-              <li>
-                <Link to="/boyd-orr">Boyd Orr</Link>
-              </li>
-              <li>
-                <Link to="/outside-sensors">Outside Sensors</Link>
-              </li>
-              <li>QMU</li>
-              <li>GUU</li>
-              <li>Parking</li>
-              <li>Societies</li>
-              <li>About</li>
-            </ul>
-          </div>
-        }
-        open={this.state.menuOpen}
-        onSetOpen={this.onSetMenuOpen}
-      >
-        <button
-          class="menubutton"
-          onClick={() => this.onSetMenuOpen(!this.state.open)}
+      <div>
+        <Sidebar
+          styles={{
+            root: { width: 200 },
+            sidebar: { background: "white" },
+            overlay: { visibility: "hidden" },
+          }}
+          sidebar={
+            <div>
+              <b>Menu</b>
+              <ul>
+                <li>
+                  <Link to="/library">Library</Link>
+                </li>
+                <li>
+                  <Link to="/boyd-orr">Boyd Orr</Link>
+                </li>
+                <li>
+                  <Link to="/outside-sensors">Outside Sensors</Link>
+                </li>
+                <li>QMU</li>
+                <li>GUU</li>
+                <li>Parking</li>
+                <li>Societies</li>
+                <li>About</li>
+              </ul>
+            </div>
+          }
+          open={this.state.menuOpen}
+          onSetOpen={this.onSetMenuOpen}
         >
-          Open menu
-        </button>
-      </Sidebar>
+          <div class="menubutton">
+            <button class="menubutton-text" onClick={() => this.onSetMenuOpen(!this.state.open)}>
+              Open menu
+            </button>
+          </div>
+        </Sidebar>
+      </div>
     );
   }
 }
