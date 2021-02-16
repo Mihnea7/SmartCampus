@@ -55,9 +55,9 @@ export default class Level extends React.Component {
             />
           </div>
         </Collapse>
-        <button onClick={this.handleSelect}>
+        {!this.props.isOutsideSensor ? <button onClick={this.handleSelect}>
           {this.state.selected ? "Deselect" : "Select"}
-        </button>
+        </button> : ""}
       </div>
     );
   }

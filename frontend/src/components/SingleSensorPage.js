@@ -29,6 +29,7 @@ export default class SingleSensorPage extends React.Component {
               formal={sensor["formalName"]}
               currentData={sensor["current"]}
               seriesData={sensor["history"]}
+              isOutsideSensor={true}
             />
           ))}
           </div>
