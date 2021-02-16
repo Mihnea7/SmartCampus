@@ -1,6 +1,15 @@
 .menubutton {
   margin: 20px;
-  padding:10px;
+  padding: 10px;
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+.menubutton-text {
+  padding: 10px;
+}
+.menubutton:hover {
+  opacity: 1;
 }
 
 ul {
