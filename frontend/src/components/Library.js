@@ -21,6 +21,7 @@ export default class Library extends LevelBuilding {
     const levelMap = this.createLevelMap();
     return (
       <div>
+        <h2><center>The Library</center></h2>
         {Object.keys(levelMap).map((level) => {
           return (
             <Level
