@@ -38,7 +38,7 @@ export default class Header extends React.Component {
         },
         pushPinOption: {
           title: sensor["formalName"],
-          color: "red",
+          color: "blue",
         },
         pushPinAddHandler: {
           type: "click",

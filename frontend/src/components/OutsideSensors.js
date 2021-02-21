@@ -54,7 +54,7 @@ export default class Header extends React.Component {
     this.setState({
       selectedSensor: sensorName,
     });
-    window.open("/outside-sensor?sensorid=" + sensorName);
+    window.open("/sensor?collection=OutsideSensors&sensorid=" + sensorName);
   }
 
   render() {
