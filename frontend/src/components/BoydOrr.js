@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Level from "./Level";
 import LevelBuilding from "./LevelBuilding.js";
+import flash from "../image/flash.png";
 
 export default class BoydOrr extends LevelBuilding {
   componentDidMount() {
@@ -19,10 +20,22 @@ export default class BoydOrr extends LevelBuilding {
 
   render() {
     const levelMap = this.createLevelMap();
-
+    const power = this.calculatePowerConsumption();
     return (
       <div>
-        <h2><center>Boyd Orr Building</center></h2>
+        <h2>
+          <center>Boyd Orr Building</center>
+        </h2>
+        <center>
+          <div style={{backgroundColor:"whitesmoke", width: 300, border: "2px solid" }}>
+            <img
+              src={flash}
+              style={{ height: 25, width: "auto" }}
+              alt="Power"
+            />{" "}
+            {`${power} kWh`}
+          </div>
+        </center>
         {Object.keys(levelMap).map((level) => {
           return (
             <Level

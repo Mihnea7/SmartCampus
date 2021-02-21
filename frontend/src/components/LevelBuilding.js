@@ -12,6 +12,7 @@ export default class LevelBuilding extends React.Component {
 
     this.selectSensor = this.selectSensor.bind(this);
     this.handleCompare = this.handleCompare.bind(this);
+    this.calculatePowerConsumption = this.calculatePowerConsumption.bind(this);
   }
   createLevelMap() {
     const levelMap = {};
@@ -47,11 +48,21 @@ export default class LevelBuilding extends React.Component {
       let selectedString = "";
       const idList = this.state.selected;
       idList.forEach((id) => {
-       // selectedString = selectedString.concat("&" + "sensorid=" + id);
-       selectedString = `${selectedString}&sensorid=${id}`
+        // selectedString = selectedString.concat("&" + "sensorid=" + id);
+        selectedString = `${selectedString}&sensorid=${id}`;
       });
       const constring = `compare?collection=${this.state.collection}${selectedString}`;
       window.open(constring);
     }
+  }
+
+  calculatePowerConsumption() {
+    let power = 0;
+    this.state.sensors.forEach((sensor) => {
+      if (sensor["type"] === "power") {
+        power += sensor["current"]["value"];
+      }
+    });
+    return power;
   }
 }

@@ -10,12 +10,12 @@ describe("Library Test", function () {
 
   it("Test the number of display boxes", function () {
     let tested = cy.get(".displaybox").its("length");
-    tested.should("eq", 4);
+    tested.should("eq", 6);
   });
 
   it("Test the number of graphs", function () {
     let tested = cy.get("svg").its("length");
-    tested.should("eq", 4);
+    tested.should("eq", 6);
   });
 
   it("Test if correct number of levels is displayed", function () {
