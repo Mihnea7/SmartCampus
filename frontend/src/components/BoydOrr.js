@@ -22,6 +22,7 @@ export default class BoydOrr extends LevelBuilding {
 
     return (
       <div>
+        <h2><center>Boyd Orr Building</center></h2>
         {Object.keys(levelMap).map((level) => {
           return (
             <Level
