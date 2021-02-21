@@ -6,6 +6,7 @@ import Library from "./Library.js";
 import OutsideSensors from "./OutsideSensors.js";
 import SingleSensorPage from "./SingleSensorPage.js"
 import Comparator from "./Comparator.js";
+import ParkingSpaces from "./ParkingSpaces.js"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/boyd-orr" component={BoydOrr} />
         <Route path="/library" component={Library} />
         <Route path="/outside-sensors" component={OutsideSensors} exact/>
+        <Route path="/parking-spaces" component={ParkingSpaces} />
         <Route path="/outside-sensor" component={SingleSensorPage}/>
         <Route path="/compare" component={Comparator} />
         <Route component={Error} />

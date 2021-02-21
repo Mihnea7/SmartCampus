@@ -40,9 +40,11 @@ export default class Menu extends React.Component {
                 <li>
                   <Link to="/outside-sensors">Outside Sensors</Link>
                 </li>
+                <li>
+                  <Link to="/parking-spaces">Parking</Link>
+                </li>
                 <li>QMU</li>
                 <li>GUU</li>
-                <li>Parking</li>
                 <li>Societies</li>
                 <li>About</li>
               </ul>
@@ -52,7 +54,10 @@ export default class Menu extends React.Component {
           onSetOpen={this.onSetMenuOpen}
         >
           <div class="menubutton">
-            <button class="menubutton-text" onClick={() => this.onSetMenuOpen(!this.state.open)}>
+            <button
+              class="menubutton-text"
+              onClick={() => this.onSetMenuOpen(!this.state.open)}
+            >
               Open menu
             </button>
           </div>
