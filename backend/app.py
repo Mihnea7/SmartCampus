@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, Response, jsonify, request
 from flask_cors import cross_origin
 from bson.objectid import ObjectId
 import pymongo
@@ -108,6 +108,21 @@ def get_parking_spaces_sensors():
         elem["_id"] = str(elem["_id"])
         all_sensors.append(elem)
     return jsonify(all_sensors)
+
+
+@app.route("/eval-user", methods=["POST"])
+@cross_origin()
+def add_user_data():
+    users = db["EvalUsers"]
+    data = request.get_json()
+    user_id = data["userId"]
+    times = data["times"]
+
+    result = users.count_documents({"userId": user_id}, limit=1)
+    if result == 0 and len(times) == 10:
+        users.insert_one(data)
+        return Response(status=200)
+    return Response(status=500)
 
 
 if __name__ == "__main__":
