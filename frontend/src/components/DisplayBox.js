@@ -3,15 +3,11 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "./DisplayBox.css";
 import "react-circular-progressbar/dist/styles.css";
 
-// properties: name of the displayed item, measurements data (list of objects)
 export default class DisplayBox extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const percentage = (
-      this.props.currentData.value * 100 / this.props.capacity
+      (this.props.currentData.value * 100) /
+      this.props.capacity
     ).toFixed(2);
     return (
       <div class="displaybox">
