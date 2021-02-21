@@ -18,7 +18,7 @@ function App() {
         <Route path="/library" component={Library} />
         <Route path="/outside-sensors" component={OutsideSensors} exact/>
         <Route path="/parking-spaces" component={ParkingSpaces} />
-        <Route path="/outside-sensor" component={SingleSensorPage}/>
+        <Route path="/sensor" component={SingleSensorPage}/>
         <Route path="/compare" component={Comparator} />
         <Route component={Error} />
       </Switch>
