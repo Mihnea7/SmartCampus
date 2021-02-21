@@ -100,5 +100,15 @@ def get_sensor_by_id_collection():
             return jsonify({})
 
 
+@app.route("/parking-spaces", methods=["GET"])
+@cross_origin()
+def get_parking_spaces_sensors():
+    all_sensors = []
+    for elem in db["ParkingSpaces"].find():
+        elem["_id"] = str(elem["_id"])
+        all_sensors.append(elem)
+    return jsonify(all_sensors)
+
+
 if __name__ == "__main__":
     app.run()

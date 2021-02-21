@@ -91,3 +91,16 @@ def test_get_sensor_by_id_collection_wrong(client):
     assert rv.status_code == 200
     expected = json.loads(rv.get_data(as_text=True))
     assert len(expected) == 0
+
+
+def test_parking_spaces_sensors(client):
+    rv = client.get("/parking-spaces")
+    assert rv.status_code == 200
+    expected = json.loads(rv.get_data(as_text=True))
+    assert len(expected) > 0
+    first_item = expected[0]
+    assert first_item["name"] is not None
+    assert type(first_item["lat"]) is float
+    assert type(first_item["long"]) is float
+    assert type(first_item["current"]) is dict
+    assert type(first_item["history"]) is list
