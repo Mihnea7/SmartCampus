@@ -90,9 +90,14 @@ export default class GraphComponent extends React.Component {
       columns: ["time", "value"],
       points: ts,
     };
+ 
+
     const timeseries = new TimeSeries(timeSeriesData);
     const { timerange } = this.state;
-
+    const ev = timeseries.atTime(new Date(this.state.tracker))
+    const trackerInfoValues = [
+      { label: "value", value: ev.data().get("value")}
+    ]
     const avg = timeseries.avg("value");
     const max = timeseries.max("value")
     const min = timeseries.min("value")
@@ -117,14 +122,14 @@ export default class GraphComponent extends React.Component {
         >
           <ChartRow
             height={this.state.height}
-            trackerInfoValues={[]}
+            trackerInfoValues={trackerInfoValues}
             trackerInfoHeight={50}
           >
             <YAxis
               id="axis1"
               label="Value"
               showGrid={true}
-              min={0.0}
+              min={max > 100000? min:0}
               max={this.state.yMaxVal}
               width="100"
             />
