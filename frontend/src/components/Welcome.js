@@ -1,6 +1,20 @@
+import axios from "axios";
 import React from "react";
 
 export default class Welcome extends React.Component {
+constructor(props) {
+  super(props)
+
+  this.handleClick = this.handleClick.bind(this);
+}
+
+  handleClick() {
+    axios.post("http://127.0.0.1:5000/eval-user", {
+      userId:0,
+      times: [0,1,2,3,4,5,6,7,8,9]
+    })
+  }
+
   render() {
     return (
         <div style={{width:"100%"}}>
@@ -20,6 +34,7 @@ export default class Welcome extends React.Component {
         map of the campus, where the sensors will be visible. They can be clicked for extra information.
       </p>
       </center>
+      <button onClick={this.handleClick} style={{marginLeft:200}}>Put user</button>
       </div>
     );
   }

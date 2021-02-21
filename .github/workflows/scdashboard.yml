@@ -5,9 +5,9 @@ name: Smart Campus CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, eval ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, eval ]
 
 jobs:
   backend:
