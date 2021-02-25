@@ -1,0 +1,8 @@
+.task {
+    align-self: center;
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0;
+    border: 2px solid black;
+    background-color: white;
+}

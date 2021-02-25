@@ -1,7 +1,7 @@
 export const tasks = {
   0: {
     text:
-      "Take some time to browse the website and figure out what everything does. Once you feel ready, press submit",
+      "Type your assigned user ID in the field below and take some time to browse the website and figure out what everything does. Once you feel ready, press submit",
     ans: "0",
   },
   1: {

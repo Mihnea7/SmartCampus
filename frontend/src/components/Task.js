@@ -1,21 +1,18 @@
 import React from "react";
-import Draggable from "react-draggable";
 
-export default class Welcome extends React.Component {
+export default class Task extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       task: this.props.text,
-      user_ans: "",
+      answer: this.props.ans,
       time: 0,
-      completed:false
+      completed: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    console.log("Task created");
-
     this.timeCounter = setInterval(() => {
       this.setState((prevState) => ({
         time: prevState.time + 1,
@@ -25,35 +22,34 @@ export default class Welcome extends React.Component {
 
   componentWillUnmount() {
     clearInterval(this.timeCounter);
+    this.props.submit();
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({time:0})
-    this.props.handler();
-    
+    this.setState({ time: 0 });
+    if (this.props.id === 0) {
+      this.props.changeId(event.target.answer.value);
+      console.log(`Selected user ID: ${event.target.answer.value}`);
+    } else {
+      this.props.saveData(this.state.time, event.target.answer.value);
+    }
+    this.props.increaseTask();
   }
 
   render() {
-    const  task  = this.props.text;
-
+    const task = this.props.text;
     return (
-      <div>
-        <Draggable>
           <div>
-            TIME: {this.props.id !== 0 ? `TIME:${this.state.time}` : "No time limit for this quesiton."}
-            <br />
             {task}
-            <form onSubmit={(this.handleSubmit)}>
+            <form onSubmit={this.handleSubmit}>
               <label>
                 Answer:
-                <input type="text" name="Answer" />
+                <input id="dataInput" type="text" name="answer" placeholder="Type your answer here"/>
               </label>
               <input type="submit" value="Submit" />
             </form>
           </div>
-        </Draggable>
-      </div>
     );
   }
 }
