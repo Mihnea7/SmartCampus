@@ -1,44 +1,81 @@
 import React from "react";
 import Task from "./Task.js";
+import axios from "axios";
 import { tasks } from "./tasks.js";
+import "./Task.css"
 
-export default class TaskMa extends React.Component {
+export default class TaskManager extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      userId: 0,
       task: 0,
       text: tasks[0]["text"],
       ans: tasks[0]["ans"],
+      times: [],
+      correctness: [],
     };
     this.increaseTaskId = this.increaseTaskId.bind(this);
+    this.setUserId = this.setUserId.bind(this);
+    this.storeUserInput = this.storeUserInput.bind(this);
+    this.submitData = this.submitData.bind(this);
   }
 
   increaseTaskId() {
-    console.log("Task ID increased");
+    if (this.state.task < 7) {
+      this.setState((prevState) => {
+        return {
+          task: prevState.task + 1,
+          text: tasks[prevState.task + 1]["text"],
+          ans: tasks[prevState.task + 1]["ans"],
+        };
+      });
+    }
+    else this.setState(prevState => {
+        return {task: prevState + 1}
+    })
+  }
+  storeUserInput(newTime, userAnswer) {
+    const newCorrectness = this.state.ans === userAnswer;
     this.setState((prevState) => {
       return {
-        task: prevState.task + 1,
-        text: tasks[prevState.task + 1]["text"],
-        ans: tasks[prevState.task + 1]["ans"],
+        times: [...prevState.times, newTime],
+        correctness: [...prevState.correctness, newCorrectness],
       };
     });
+    console.log(this.state.times, this.state.correctness);
   }
-
+  setUserId(newId) {
+    this.setState({ userId: newId });
+  }
+  submitData() {
+    axios.post("http://127.0.0.1:5000/eval-user", {
+      userId:this.state.userId,
+      times: this.state.times,
+      correctness: this.state.correctness
+    })
+    .catch(()=> {console.log("Failed to post data (userId may already exist)")})
+  }
   render() {
     const { task } = this.state;
-    const text = tasks[task]["text"];
-    console.log(task);
-    let {show} = this.state
-    if (!show) show = true
+    let text = ""
+    let ans = ""
+    if (this.state.task < 8)
+     {text = tasks[task]["text"];
+     ans = tasks[task]["ans"];}
+     console.log(this.state)
     return (
-      <div>
+      <div class="task">
         {task < 8 ? (
           <Task
             id={task}
             text={text}
-            correctAns={this.state.ans}
-            handler={this.increaseTaskId}
+            correctAns={ans}
+            increaseTask={this.increaseTaskId}
+            saveData={this.storeUserInput}
+            changeId={this.setUserId}
+            submit={this.submitData}
           />
         ) : (
           ""
