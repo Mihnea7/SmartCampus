@@ -10,7 +10,7 @@ export default class BoydOrr extends LevelBuilding {
       url: "boyd-orr",
       collection: "BoydOrr",
     });
-    axios.get("http://127.0.0.1:5000/boyd-orr").then((res) => {
+    axios.get("http://mihnea17.pythonanywhere.com/boyd-orr").then((res) => {
       const all_sensors = res.data;
       this.setState((state) => {
         return { sensors: all_sensors };

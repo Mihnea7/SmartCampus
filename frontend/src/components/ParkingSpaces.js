@@ -17,7 +17,7 @@ export default class Header extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://127.0.0.1:5000/parking-spaces").then((res) => {
+    axios.get("http://mihnea17.pythonanywhere.com/parking-spaces").then((res) => {
       const all_sensors = res.data;
       this.setState((state) => {
         return { sensors: all_sensors, sens: all_sensors[0] };
