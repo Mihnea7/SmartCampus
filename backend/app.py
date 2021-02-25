@@ -117,9 +117,10 @@ def add_user_data():
     data = request.get_json()
     user_id = data["userId"]
     times = data["times"]
+    correctness = data["correctness"]
 
     result = users.count_documents({"userId": user_id}, limit=1)
-    if result == 0 and len(times) == 10:
+    if result == 0 and len(times) == 7 and len(correctness) == 7:
         users.insert_one(data)
         return Response(status=200)
     return Response(status=500)
