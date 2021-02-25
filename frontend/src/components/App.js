@@ -7,11 +7,13 @@ import OutsideSensors from "./OutsideSensors.js";
 import SingleSensorPage from "./SingleSensorPage.js"
 import Comparator from "./Comparator.js";
 import ParkingSpaces from "./ParkingSpaces.js"
+import TaskManager from "./TaskManager.js";
 
 function App() {
   return (
     <main>
       <Header />
+      <TaskManager />
       <Switch>
         <Route path="/" component={Welcome} exact />
         <Route path="/boyd-orr" component={BoydOrr} />
