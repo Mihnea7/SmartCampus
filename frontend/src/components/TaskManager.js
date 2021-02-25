@@ -50,7 +50,7 @@ export default class TaskManager extends React.Component {
     this.setState({ userId: newId });
   }
   submitData() {
-    axios.post("http://127.0.0.1:5000/eval-user", {
+    axios.post("http://mihnea17.pythonanywhere.com/eval-user", {
       userId:this.state.userId,
       times: this.state.times,
       correctness: this.state.correctness

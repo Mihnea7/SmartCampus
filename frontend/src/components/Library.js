@@ -10,7 +10,7 @@ export default class Library extends LevelBuilding {
       url: "library",
       collection: "Library",
     });
-    axios.get("http://127.0.0.1:5000/library").then((res) => {
+    axios.get("http://mihnea17.pythonanywhere.com/library").then((res) => {
       const all_sensors = res.data;
       this.setState((state) => {
         return { sensors: all_sensors };
