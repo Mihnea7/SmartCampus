@@ -11,7 +11,7 @@ export default class SingleSensorPage extends React.Component {
   componentDidMount() {
     let qParams = this.props.location.search;
     console.log(qParams);
-    axios.get("http://mihnea17.pythonanywhere.com/sensor" + qParams).then((res) => {
+    axios.get("https://mihnea17.pythonanywhere.com/sensor" + qParams).then((res) => {
       const all_sensor = res.data;
       console.log(all_sensor);
       this.setState((state) => {

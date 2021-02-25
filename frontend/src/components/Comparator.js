@@ -17,7 +17,7 @@ export default class Comparator extends React.Component {
     id_list.forEach((id) => {
       console.log(id);
       axios
-        .get("http://mihnea17.pythonanywhere.com/sensor" + collection + "&" + id)
+        .get("https://mihnea17.pythonanywhere.com/sensor" + collection + "&" + id)
         .then((res) => {
           const all_sensor = res.data;
           const add_state = this.state.sensor;

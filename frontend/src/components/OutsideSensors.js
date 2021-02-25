@@ -17,7 +17,7 @@ export default class Header extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://mihnea17.pythonanywhere.com/outside-sensors").then((res) => {
+    axios.get("https://mihnea17.pythonanywhere.com/outside-sensors").then((res) => {
       const all_sensors = res.data;
       this.setState((state) => {
         return { sensors: all_sensors, sens: all_sensors[0] };
