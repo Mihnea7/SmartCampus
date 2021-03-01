@@ -1,9 +1,9 @@
 import React from "react";
 import DisplayBox from "./DisplayBox.js";
-import GraphComponent from "./GraphComponent.js";
 import Arrow from "./Arrow.js";
 import { Collapse } from "react-collapse";
 import "./DisplaySensor.css";
+import GraphComponent from "./GraphComponents/GraphComponent.js";
 
 export default class DisplaySensor extends React.Component {
   constructor(props) {

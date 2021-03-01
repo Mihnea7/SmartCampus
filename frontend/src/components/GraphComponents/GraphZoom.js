@@ -1,6 +1,6 @@
 import React from "react";
-import zoom from "../image/zoom.png"
-import unzoom from "../image/unzoom.png"
+import zoom from "../../image/zoom.png"
+import unzoom from "../../image/unzoom.png"
 import "./GraphControl.css"
 
 export default class GraphZoom extends React.Component {

@@ -1,7 +1,7 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import GraphComponent from "./GraphComponent";
-import fullscreen from "../image/fullscreen.svg";
+import fullscreen from "../../image/fullscreen.svg";
 import "./GraphControl.css"
 
 export default class FullscreenGraph extends React.Component {
