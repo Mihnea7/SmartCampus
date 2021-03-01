@@ -1,10 +1,9 @@
 import React from "react";
 import { ReactBingmaps } from "react-bingmaps";
-import { config } from "./config.js";
-import "./OutsideSensors.css";
+import { config } from "../config.js";
+import "./MapComponent.css";
 
-export default class ParkingSpaces extends React.Component {
-
+export default class MapComponent extends React.Component {
   render() {
     return (
       <div>

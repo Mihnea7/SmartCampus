@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import ParkingSpaces from "../components/ParkingSpaces.js";
+import MapComponent from "../components/MapComponent/MapComponent.js";
 
 export default class ParkingSpacesContainer extends React.Component {
   constructor(props) {
@@ -56,6 +56,6 @@ export default class ParkingSpacesContainer extends React.Component {
   }
 
   render() {
-    return <ParkingSpaces pins={this.createPins()} />;
+    return <MapComponent pins={this.createPins()} />;
   }
 }
