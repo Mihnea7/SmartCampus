@@ -4,7 +4,7 @@ import GraphComponent from "./GraphComponent";
 import fullscreen from "../image/fullscreen.svg";
 import "./GraphControl.css"
 
-export default class GraphControl extends React.Component {
+export default class FullscreenGraph extends React.Component {
   render() {
     return (
       <div class="fullscreen-icon">

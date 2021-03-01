@@ -3,7 +3,7 @@ import { ReactBingmaps } from "react-bingmaps";
 import { config } from "./config.js";
 import "./OutsideSensors.css";
 
-export default class Header extends React.Component {
+export default class OutsideSensors extends React.Component {
   render() {
     return (
       <div>
