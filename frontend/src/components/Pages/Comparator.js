@@ -1,5 +1,5 @@
 import React from "react";
-import GraphComponent from "../GraphComponents/GraphComponent.js";
+import GraphContainer from "../../containers/GraphContainer.js";
 
 export default class Comparator extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export default class Comparator extends React.Component {
           return (
             <center>
               <h3>{sensor.formal}</h3>
-              <GraphComponent
+              <GraphContainer
                 seriesData={sensor.history}
                 width={1000}
                 height={300}

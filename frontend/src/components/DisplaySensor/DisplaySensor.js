@@ -2,8 +2,8 @@ import React from "react";
 import DisplayBox from "../DisplayBox/DisplayBox.js";
 import { Collapse } from "react-collapse";
 import "./DisplaySensor.css";
-import GraphComponent from "../GraphComponents/GraphComponent.js";
 import Arrow from "../Arrow/Arrow.js";
+import GraphContainer from "../../containers/GraphContainer.js";
 
 export default class DisplaySensor extends React.Component {
   constructor(props) {
@@ -47,7 +47,7 @@ export default class DisplaySensor extends React.Component {
             capacity={this.props.capacity}
           />
           <div class="graph-box">
-            <GraphComponent
+            <GraphContainer
               seriesData={this.props.seriesData}
               yMaxVal={80}
               width={700}
