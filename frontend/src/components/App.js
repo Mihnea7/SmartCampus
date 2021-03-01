@@ -3,10 +3,10 @@ import Header from "./Header.js";
 import { Switch, Route } from "react-router-dom";
 import Welcome from "./Welcome.js";
 import Library from "./Library.js";
-import OutsideSensors from "./OutsideSensors.js";
 import SingleSensorPage from "./SingleSensorPage.js"
 import Comparator from "./Comparator.js";
-import ParkingSpaces from "./ParkingSpaces.js"
+import ParkingSpaceContainer from "../containers/ParkingSpacesContainer.js";
+import OutsideSensorsContainer from "../containers/OutsideSensorsContainer.js"
 
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
         <Route path="/" component={Welcome} exact />
         <Route path="/boyd-orr" component={BoydOrr} />
         <Route path="/library" component={Library} />
-        <Route path="/outside-sensors" component={OutsideSensors} exact/>
-        <Route path="/parking-spaces" component={ParkingSpaces} />
+        <Route path="/outside-sensors" component={OutsideSensorsContainer} exact/>
+        <Route path="/parking-spaces" component={ParkingSpaceContainer} />
         <Route path="/sensor" component={SingleSensorPage}/>
         <Route path="/compare" component={Comparator} />
         <Route component={Error} />
