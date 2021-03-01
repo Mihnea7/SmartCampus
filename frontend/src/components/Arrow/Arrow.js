@@ -1,5 +1,5 @@
 import React from "react";
-import arrow from "../image/arrow.svg";
+import arrow from "../../image/arrow.svg"
 import "./Arrow.css";
 
 export default class Arrow extends React.Component {

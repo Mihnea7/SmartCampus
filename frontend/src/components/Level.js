@@ -1,7 +1,7 @@
 import React from "react";
 import DisplaySensor from "./DisplaySensor.js";
 import { Collapse } from "react-collapse";
-import Arrow from "./Arrow.js";
+import Arrow from "./Arrow/Arrow.js";
 import "./Level.css";
 
 export default class Level extends React.Component {

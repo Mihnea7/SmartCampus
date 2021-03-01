@@ -1,6 +1,6 @@
 import React from "react";
 import DisplayBox from "./DisplayBox.js";
-import Arrow from "./Arrow.js";
+import Arrow from "./Arrow/Arrow.js";
 import { Collapse } from "react-collapse";
 import "./DisplaySensor.css";
 import GraphComponent from "./GraphComponents/GraphComponent.js";
