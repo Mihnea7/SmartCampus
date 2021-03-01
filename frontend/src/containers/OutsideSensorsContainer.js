@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import OutsideSensors from "../components/OutsideSensors.js";
+import MapComponent from "../components/MapComponent/MapComponent.js";
 
 export default class OutsideSensorsContainer extends React.Component {
   constructor(props) {
@@ -55,6 +55,6 @@ export default class OutsideSensorsContainer extends React.Component {
     window.open("/sensor?collection=OutsideSensors&sensorid=" + sensorName);
   }
   render() {
-    return <OutsideSensors pins={this.createPins()} />;
+    return <MapComponent pins={this.createPins()} />;
   }
 }
