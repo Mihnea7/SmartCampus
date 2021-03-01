@@ -7,7 +7,7 @@ import {
   LineChart,
 } from "react-timeseries-charts";
 import GraphZoom from "./GraphZoom.js";
-import FullscreenGraph from "./FullscreenGraph.js"
+import FullscreenGraph from "./FullscreenGraph.js";
 import { TimeSeries, TimeRange } from "pondjs";
 
 export default class GraphComponent extends React.Component {
@@ -60,8 +60,6 @@ export default class GraphComponent extends React.Component {
     this.setState({ timerange });
   };
 
-  handleyMaxVal;
-
   sortFunction(a, b) {
     if (a[0] === b[0]) {
       return 0;
@@ -90,24 +88,23 @@ export default class GraphComponent extends React.Component {
       columns: ["time", "value"],
       points: ts,
     };
- 
 
     const timeseries = new TimeSeries(timeSeriesData);
     const { timerange } = this.state;
-    const ev = timeseries.atTime(new Date(this.state.tracker))
+    const ev = timeseries.atTime(new Date(this.state.tracker));
     const trackerInfoValues = [
-      { label: "value", value: ev.data().get("value")}
-    ]
-    const avg = timeseries.avg("value");
-    const max = timeseries.max("value")
-    const min = timeseries.min("value")
+      { label: "value", value: ev.data().get("value") },
+    ];
+    const avg = timeseries.avg("value").toFixed(2);
+    const max = timeseries.max("value").toFixed(2);
+    const min = timeseries.min("value").toFixed(2);
 
     return (
       <div>
         <center>
-        Average value: {avg} <br />
-        Historic maximum: {max} <br />
-        Historic minimum: {min}
+          Average value: {avg} <br />
+          Historic maximum: {max} <br />
+          Historic minimum: {min}
         </center>
         <ChartContainer
           class="displayGraph"
@@ -129,7 +126,7 @@ export default class GraphComponent extends React.Component {
               id="axis1"
               label="Value"
               showGrid={true}
-              min={max > 100000? min:0}
+              min={max > 100000 ? min : 0}
               max={this.state.yMaxVal}
               width="100"
             />
@@ -144,8 +141,13 @@ export default class GraphComponent extends React.Component {
           </ChartRow>
         </ChartContainer>
         <center>
-        <FullscreenGraph seriesData={this.props.seriesData} yMaxVal={this.state.yMaxVal} width={1500} height={500} />
-        <GraphZoom onClick={this.addZoom} />
+          <FullscreenGraph
+            seriesData={this.props.seriesData}
+            yMaxVal={this.state.yMaxVal}
+            width={1500}
+            height={500}
+          />
+          <GraphZoom onClick={this.addZoom} />
         </center>
       </div>
     );
