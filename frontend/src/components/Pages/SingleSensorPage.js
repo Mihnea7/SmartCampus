@@ -1,5 +1,5 @@
 import React from "react";
-import DisplaySensor from "./DisplaySensor.js";
+import DisplaySensor from "../DisplaySensor/DisplaySensor.js";
 export default class SingleSensorPage extends React.Component {
   
   render() {
