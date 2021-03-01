@@ -1,8 +1,8 @@
 import React from "react";
-import Menu from "./Menu.js";
-import logo from "../image/uni-logo.png";
+import logo from "../../image/uni-logo.png";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import Menu from "../Menu/Menu";
 
 export default class Header extends React.Component {
   render() {

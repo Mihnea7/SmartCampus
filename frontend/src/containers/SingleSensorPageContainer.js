@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import SingleSensorPage from "../components/SingleSensorPage";
+import SingleSensorPage from "../components/Pages/SingleSensorPage";
 
 export default class SingleSensorPageContainer extends React.Component {
   constructor(props) {

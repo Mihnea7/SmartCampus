@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Comparator from "../components/Comparator";
+import Comparator from "../components/Pages/Comparator";
 
 export default class ComparatorContainer extends React.Component {
   constructor(props) {

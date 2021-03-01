@@ -1,5 +1,5 @@
 import React from "react";
-import GraphComponent from "./GraphComponents/GraphComponent";
+import GraphComponent from "../GraphComponents/GraphComponent.js";
 
 export default class Comparator extends React.Component {
   render() {

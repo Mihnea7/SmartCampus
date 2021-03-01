@@ -1,12 +1,12 @@
-import BoydOrr from "./BoydOrr.js";
-import Header from "./Header.js";
+import BoydOrr from "./LevelBuildings/BoydOrr.js";
 import { Switch, Route } from "react-router-dom";
-import Welcome from "./Welcome.js";
-import Library from "./Library.js";
+import Welcome from "./Pages/Welcome.js";
+import Library from "./LevelBuildings/Library.js";
 import ParkingSpaceContainer from "../containers/ParkingSpacesContainer.js";
 import OutsideSensorsContainer from "../containers/OutsideSensorsContainer.js"
 import SingleSensorPageContainer from "../containers/SingleSensorPageContainer.js";
 import ComparatorContainer from "../containers/ComparatorContainer.js";
+import Header from "./Header/Header.js";
 
 function App() {
   return (
