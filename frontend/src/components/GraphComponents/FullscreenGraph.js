@@ -1,6 +1,6 @@
 import React from "react";
 import Popup from "reactjs-popup";
-import GraphComponent from "./GraphComponent";
+import GraphContainer from "../../containers/GraphContainer";
 import fullscreen from "../../image/fullscreen.svg";
 import "./GraphControl.css"
 
@@ -24,7 +24,7 @@ export default class FullscreenGraph extends React.Component {
         nested
       >
           <div class="popup-box">
-        <GraphComponent
+        <GraphContainer
           seriesData={this.props.seriesData}
           yMaxVal={this.props.yMaxVal}
           height={this.props.height}
