@@ -5,7 +5,7 @@ import Arrow from "./Arrow.js";
 import { Collapse } from "react-collapse";
 import "./DisplaySensor.css";
 
-export default class Level extends React.Component {
+export default class DisplaySensor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
