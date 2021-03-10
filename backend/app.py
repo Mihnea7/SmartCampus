@@ -118,9 +118,10 @@ def add_user_data():
     user_id = data["userId"]
     times = data["times"]
     correctness = data["correctness"]
+    clicks = data["clicks"]
 
     result = users.count_documents({"userId": user_id}, limit=1)
-    if result == 0 and len(times) == 7 and len(correctness) == 7:
+    if result == 0 and len(times) == 8 and len(correctness) == 8 and len(clicks) == 8:
         users.insert_one(data)
         return Response(status=200)
     return Response(status=500)
