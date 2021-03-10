@@ -8,12 +8,14 @@ import SingleSensorPage from "./SingleSensorPage.js"
 import Comparator from "./Comparator.js";
 import ParkingSpaces from "./ParkingSpaces.js"
 import TaskManager from "./TaskManager.js";
+import { useState } from 'react';
 
 function App() {
+  const [clickCount, setCount] = useState(0);
   return (
-    <main>
+    <main onMouseDownCapture={() => setCount(clickCount + 1)}>
       <Header />
-      <TaskManager />
+      <TaskManager  clickCounter={clickCount} resetCount={() => setCount(0)} />
       <Switch>
         <Route path="/" component={Welcome} exact />
         <Route path="/boyd-orr" component={BoydOrr} />

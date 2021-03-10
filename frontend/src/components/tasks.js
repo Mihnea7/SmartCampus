@@ -9,7 +9,7 @@ export const tasks = {
     ans: "57",
   },
   2: {
-    text: "What is the current temperature in the Library on Level 2?",
+    text: "What is the current temperature in the Library on Level 2? Answer without any units.",
     ans: "19.6",
   },
   3: {
@@ -19,7 +19,7 @@ export const tasks = {
   },
   4: {
     text:
-      "What is the total current power consumption of the Boyd Orr Building?",
+      "What is the total current power consumption of the Boyd Orr Building? Answer without any units.",
     ans: "45190878",
   },
   5: {
@@ -28,7 +28,7 @@ export const tasks = {
     ans: "2",
   },
   6: {
-    text: "What is the percentage of seats currently occupied in BO715?",
+    text: "What is the percentage of seats currently occupied in BO715? Answer without the % sign.",
     ans: "18.75",
   },
   7: {
@@ -36,4 +36,9 @@ export const tasks = {
       "How many people are in Boyd Orr Lecture Theatre 221 on 21st November at 1:30pm?",
     ans: "0",
   },
+  8: {
+    text:
+      "The tasks are finished. Thank you so much for participating! Once you click Submit, this box will disappear.",
+    ans: "",
+  }
 };

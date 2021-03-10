@@ -9,6 +9,7 @@ export default class Task extends React.Component {
       answer: this.props.ans,
       time: 0,
       completed: false,
+      clicks: 0,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -32,24 +33,29 @@ export default class Task extends React.Component {
       this.props.changeId(event.target.answer.value);
       console.log(`Selected user ID: ${event.target.answer.value}`);
     } else {
-      this.props.saveData(this.state.time, event.target.answer.value);
+      this.props.saveData(this.state.time, event.target.answer.value, this.props.clickCounter);
     }
     this.props.increaseTask();
+    this.props.resetCount();
   }
-
   render() {
     const task = this.props.text;
     return (
-          <div>
-            {task}
-            <form onSubmit={this.handleSubmit}>
-              <label>
-                Answer:
-                <input id="dataInput" type="text" name="answer" placeholder="Type your answer here"/>
-              </label>
-              <input type="submit" value="Submit" />
-            </form>
-          </div>
+      <div>
+        {task} <br />
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Answer:
+            <input
+              id="dataInput"
+              type="text"
+              name="answer"
+              placeholder="Type your answer here"
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }
