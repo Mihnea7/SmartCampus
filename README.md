@@ -1,5 +1,6 @@
 # Smart Campus Dashboard Project 
 
+https://smart-campus.vercel.app/
 
 ### Requirements
 
@@ -34,3 +35,18 @@ MQTT broker subscribes to all sensors and reads their data, saving it in a colle
 The REST API is a Flask program that defines URLs in views that query the database and return the results. The flow of the application is the frontend makes requests to the Flask server to obtain the data it needs to display and the server returns the data it gets from the database, all while the devices add new data or update existing data.
 
 However, as I previously mentioned, the application is not concerned with whether the data is real or not, and collecting data is beyond the scope of this project. For this reason, the majority of the data that the frontend will display is mock data, generated randomly or by adding noise to data collected from the sensor prototype.
+
+
+### Instructions
+
+The project comes in 2 parts: the backend located in folder /backend includes the flask script, the scripts for the sensor and broker Raspberry Pis, as well as Python unit tests. The React frontend is located in /frontend.
+
+To run the Flask server, the user needs to have all dependencies in requirements.txt installed. This can be done by typing *pip install -r requirements.txt*
+
+When all dependencies are installed, the script can be run by typing *python app.py* to create a local instance of the Flask server running on default port 5000. The server will attempt to establish a connection with a MongoDB database with the connection string specified in backend/config_flask.ini. Make sure to change it to your own string. Unit tests can be run with the command *pytest*
+
+The frontend uses Node Package Manager, so npm needs to be installed to run the frontend. Once it is, running the frontend can be done with the command *npm start* which will start a local instance of the server on default port 3000. The Flask server should already be running in order for the frontend to display properly. Cypress integration tests can be run with the command *npm run e2e*
+
+### Deployment
+
+To deploy the Smart Campus Dashboard, both backend and frontend need to be deployed individually. The platform is up to the user, as long as it is configured correctly. The backend **must** allow requests that originate from other websites, i.e must enable CORS. In my case, I deployed the Smart Campus Dashboad using PythonAnywhere for the backend and Vercel for the frontend.
